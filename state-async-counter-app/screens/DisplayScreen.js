@@ -14,8 +14,6 @@ export default function DisplayScreen () {
                 <Text style={styles.nameText}>Hello {name}! Here your number:</Text>
                 <Text style={styles.counterText}>{count}</Text>
             </View>
-
-
         </SafeAreaView>
     )
 }

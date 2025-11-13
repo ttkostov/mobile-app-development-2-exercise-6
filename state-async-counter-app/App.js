@@ -1,5 +1,4 @@
 import {StatusBar} from 'expo-status-bar';
-import {Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native'
 import {createNativeBottomTabNavigator} from '@react-navigation/bottom-tabs/unstable';
 import CounterScreen from "./screens/CounterScreen";
