@@ -30,7 +30,6 @@ export default function CounterScreen() {
                     mode="outlined"
                     label="Enter your name"
                     onChangeText={setName}
-                  //  value={name}
                 />
             </View>
         </SafeAreaView>

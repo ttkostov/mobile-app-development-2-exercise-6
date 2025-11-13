@@ -10,8 +10,6 @@ import {Provider as PaperProvider} from 'react-native-paper';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-
-
     return (
         <PaperProvider>
             <NavigationContainer>
@@ -45,8 +43,7 @@ export default function App() {
             <StatusBar/>
 
         </PaperProvider>
-    )
-        ;
+    );
 }
 
 const styles = StyleSheet.create({
