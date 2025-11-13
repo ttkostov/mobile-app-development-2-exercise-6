@@ -17,22 +17,10 @@ export default function App() {
 
                 <Tab.Navigator>
                     <Tab.Screen name="Counter"
-                                component={CounterScreen}
-                                options={{
-
-                                    tabBarIcon: {
-                                        type: "drawableResource",
-                                        name: "heart_icon"
-                                    }
-                                }}/>
+                                component={CounterScreen}/>
                     <Tab.Screen
                         name="Display"
                         component={DisplayScreen}
-                        options={{
-                            tabBarIcon: ({color, size}) => (
-                                <Text style={{color: color, fontSize: size}}>🖥️</Text>
-                            )
-                        }}
                     />
                 </Tab.Navigator>
 
