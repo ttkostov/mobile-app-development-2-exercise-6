@@ -4,16 +4,19 @@ import {createNativeBottomTabNavigator} from '@react-navigation/bottom-tabs/unst
 import CounterScreen from "./screens/CounterScreen";
 import DisplayScreen from "./screens/DisplayScreen";
 import {Provider as PaperProvider} from 'react-native-paper';
+import {Platform} from 'react-native';
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 
 
-const Tab = createNativeBottomTabNavigator();
+const Tab = Platform.OS === 'web'
+    ? createBottomTabNavigator()
+    : createNativeBottomTabNavigator();
 
 export default function App() {
     return (
         <PaperProvider>
             <StatusBar/>
             <NavigationContainer>
-
                 <Tab.Navigator>
                     <Tab.Screen name="Counter"
                                 component={CounterScreen}/>
