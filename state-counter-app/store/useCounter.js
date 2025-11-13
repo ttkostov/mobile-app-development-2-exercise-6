@@ -5,7 +5,7 @@ import {create} from 'zustand'
     count: 0,
     incrementCounter: () => set((state) => ({count: state.count + 1})),
     decrementCounter: () => set((state) => ({count: state.count - 1})),
-    resetCounter: () => set((state) => ({count: 0})),
+    resetCounter: () => set(() => ({count: 0})),
 }))
 
 export default useCounter;

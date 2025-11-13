@@ -1,5 +1,5 @@
 import {SafeAreaView} from "react-native-safe-area-context";
-import {StyleSheet, View, Text} from "react-native";
+import {StyleSheet, View} from "react-native";
 import {Button, TextInput} from 'react-native-paper';
 import useCounter from '../store/useCounter'
 import useName from "../store/useName";
@@ -7,7 +7,7 @@ import useName from "../store/useName";
 
 export default function CounterScreen() {
 
-    const {count, incrementCounter, decrementCounter, resetCounter} = useCounter();
+    const {incrementCounter, decrementCounter, resetCounter} = useCounter();
     const {name, setName} = useName();
 
     return (
@@ -30,6 +30,7 @@ export default function CounterScreen() {
                     mode="outlined"
                     label="Enter your name"
                     onChangeText={setName}
+                    value={name ?? ''}
                 />
             </View>
         </SafeAreaView>

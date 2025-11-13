@@ -4,8 +4,8 @@ import useCounter from '../store/useCounter'
 import useName from "../store/useName";
 
 export default function DisplayScreen () {
-    const {count, incrementCounter, decrementCounter} = useCounter();
-    const {name, setName} = useName();
+    const {count} = useCounter();
+    const {name} = useName();
 
 
     return (
