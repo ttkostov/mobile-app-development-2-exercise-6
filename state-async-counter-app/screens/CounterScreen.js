@@ -1,4 +1,4 @@
-import {SafeAreaView} from "react-native-safe-area-context";
+import {SafeAreaView, SafeAreaProvider} from "react-native-safe-area-context";
 import {StyleSheet, View} from "react-native";
 import {Button, TextInput} from 'react-native-paper';
 import useCounter from '../store/useCounter'
@@ -11,29 +11,29 @@ export default function CounterScreen() {
     const {name, setName} = useName();
 
     return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.buttonContainer}>
-                <Button mode="contained"
-                        onPress={incrementCounter}>
-                    ➕</Button>
-                <Button mode="contained"
-                        onPress={decrementCounter}>
-                    ➖</Button>
-                <Button mode="contained"
-                        onPress={resetCounter}>
-                    Reset</Button>
+        <SafeAreaProvider>
+            <SafeAreaView style={styles.container}>
 
-            </View>
-            <View style={styles.buttonContainer}>
-                <TextInput
-                    style={styles.input}
-                    mode="outlined"
-                    label="Enter your name"
-                    onChangeText={setName}
-                    value={name ?? ''}
-                />
-            </View>
-        </SafeAreaView>
+                <View style={styles.buttonContainer}>
+                    <Button mode="contained" onPress={incrementCounter}>+</Button>
+                    <Button mode="contained" onPress={decrementCounter}>-</Button>
+                    <Button mode="contained" onPress={resetCounter} textColor="white">Reset</Button>
+                </View>
+
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        mode="outlined"
+                        label="Enter your name"
+                        onChangeText={setName}
+                        value={name ?? ''}
+                        dense
+                        style={styles.input}
+                    />
+                </View>
+
+            </SafeAreaView>
+        </SafeAreaProvider>
+
     )
 
 }
@@ -42,17 +42,24 @@ export default function CounterScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: '#fff',
     },
     buttonContainer: {
-        flex: 1,
-        justifyContent: 'center',
+        width: '80%',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        marginBottom: 20,
+        gap: 10
+    },
+    inputContainer: {
+        width: '80%',
         alignItems: 'center',
-        gap: 20
     },
     input: {
-       backgroundColor: '#fff',
-    }
+        width: '100%',
+        height: 50, // ✅ forces proper height
+        backgroundColor: '#fff',
+    },
 });
