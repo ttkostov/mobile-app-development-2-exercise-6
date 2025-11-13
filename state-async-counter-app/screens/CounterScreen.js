@@ -3,12 +3,19 @@ import {StyleSheet, View} from "react-native";
 import {Button, TextInput} from 'react-native-paper';
 import useCounter from '../store/useCounter'
 import useName from "../store/useName";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 export default function CounterScreen() {
 
     const {incrementCounter, decrementCounter, resetCounter} = useCounter();
     const {name, setName} = useName();
+
+    const resetData = async () => {
+        resetCounter();
+        setName('');
+        await AsyncStorage.clear();
+    }
 
     return (
         <SafeAreaProvider>
@@ -31,6 +38,10 @@ export default function CounterScreen() {
                     />
                 </View>
 
+                <View style={styles.buttonContainer}>
+                    <Button mode="outlined" onPress={resetData}>Reset Data</Button>
+                </View>
+
             </SafeAreaView>
         </SafeAreaProvider>
 
@@ -45,12 +56,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff',
+        gap: 40
     },
     buttonContainer: {
         width: '80%',
         flexDirection: 'column',
         justifyContent: 'space-around',
-        marginBottom: 20,
         gap: 10
     },
     inputContainer: {
